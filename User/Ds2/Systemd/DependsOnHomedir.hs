@@ -20,6 +20,7 @@ createHomedirFragment :: PasswdEntry -> String
 createHomedirFragment (PasswdEntry (Username un) ph uid gid comm (HomeDirectory home) shell) =
   "# home directory dependency for " ++ un ++ "\n" ++
   "[Unit]\n" ++
+  "SourcePath=/etc/passwd\n" ++
   "RequiresMountsFor=" ++ home ++ "\n"
 
 -- create the DropInFragment describing the user service this fragment is for
